@@ -833,11 +833,15 @@ nav.navbar{
 }
 .price-card .plan-name{ font-family:'IBM Plex Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color: var(--accent-700); margin-bottom:16px; }
 .price-card.featured .plan-name{ color: var(--silver-300); }
-.price-card .plan-price{ font-family:'Fraunces',serif; font-size:44px; color: var(--ink-900); margin-bottom:6px; }
+.price-card .plan-price{ font-family:'Fraunces',serif; font-size:32px; line-height:1.15; color: var(--ink-900); margin-bottom:6px; }
 .price-card.featured .plan-price{ color: var(--white); }
 .price-card .plan-sub{ font-size:13px; color: var(--ink-400); margin-bottom:28px; }
 .price-card.featured .plan-sub{ color: var(--silver-400); }
 .plan-features{ display:flex; flex-direction:column; gap:13px; margin-bottom:32px; flex:1; }
+.plan-tagline{ font-size:13.5px; line-height:1.55; color: var(--ink-500); margin-bottom:24px; }
+.price-card.featured .plan-tagline{ color: var(--silver-300); }
+.center-tabs{ justify-content:center; }
+.pricing-note{ text-align:center; font-size:12.5px; color: var(--ink-400); margin:28px 0 56px; }
 .plan-feature{ display:flex; gap:10px; font-size:13.5px; color: var(--ink-800); align-items:flex-start; }
 .price-card.featured .plan-feature{ color: var(--silver-100); }
 .plan-feature .chk{ color: var(--up); flex-shrink:0; }
@@ -902,7 +906,8 @@ nav.navbar{
 .cta-actions{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; position:relative; }
 .cta-band .btn.primary{ background: var(--white); color: var(--ink-900); border-color: var(--white); }
 .cta-band .btn.primary::after{ background: linear-gradient(120deg, transparent 20%, rgba(0,0,0,0.06) 40%, transparent 60%); }
-.cta-band .btn:not(.primary){ border-color: rgba(255,255,255,0.3); color: var(--white); }
+.cta-band .btn:not(.primary){ background: transparent; border-color: rgba(255,255,255,0.3); color: var(--white); }
+.cta-band .btn:not(.primary):hover{ background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.5); }
 
 /* ---------------------------------------------------------------------
    25. FOOTER
@@ -1486,6 +1491,16 @@ footer{ border-top:1px solid var(--line); padding: 64px 0 34px; background: var(
 .ppt-process-cell p{ font-size:12px; color: var(--ink-400); }
 
 .ppt-pricing-wrap{ display:flex; justify-content:center; }
+.ppt-pricing-panel{
+  border:1px solid var(--line); border-radius: var(--r-lg); background: var(--surface-2);
+  padding:56px; display:grid; grid-template-columns: 1fr 440px; gap:56px; align-items:center;
+}
+.ppt-pricing-info .kicker{ margin-bottom:16px; }
+.ppt-pricing-info h3{ font-size: clamp(24px,2.6vw,30px); color: var(--ink-900); margin-bottom:14px; max-width:480px; }
+.ppt-pricing-info p{ font-size:14.5px; color: var(--ink-500); max-width:460px; margin-bottom:28px; }
+.ppt-pricing-points{ display:flex; flex-direction:column; gap:16px; }
+.ppt-pricing-point{ display:flex; gap:12px; align-items:flex-start; font-size:14px; color: var(--ink-700); }
+.ppt-pricing-point .chk{ color: var(--up); flex-shrink:0; }
 .ppt-price-card{
   max-width:460px; width:100%; border:1px solid var(--ink-900); border-radius: var(--r-lg); padding:44px 40px;
   background: linear-gradient(180deg, var(--ink-900), var(--accent-900)); color: var(--white); text-align:center; box-shadow: var(--shadow-lg);
@@ -1507,11 +1522,15 @@ footer{ border-top:1px solid var(--line); padding: 64px 0 34px; background: var(
   .ppt-hero-panel{ padding:36px; }
   .ppt-features-grid{ grid-template-columns: 1fr 1fr; }
   .ppt-process-grid{ grid-template-columns: 1fr 1fr; }
+  .ppt-pricing-panel{ grid-template-columns: 1fr; padding:40px 32px; gap:40px; }
+  .ppt-pricing-info h3, .ppt-pricing-info p{ max-width:none; }
+  .ppt-price-card{ margin:0 auto; }
 }
 @media (max-width: 620px){
   .ppt-features-grid, .ppt-process-grid{ grid-template-columns: 1fr; }
   .ppt-stats-row{ gap:26px; }
   .ppt-price-card{ padding:34px 26px; }
+  .ppt-pricing-panel{ padding:30px 22px; }
 }
 
 /* ---------------------------------------------------------------------
@@ -2474,64 +2493,64 @@ const ROADMAP = [{
 // Expanded feature matrix for the pricing section
 const FEATURE_MATRIX = [{
   label: "Daily research reports",
-  starter: true,
-  pro: true,
-  team: true
+  basic: true,
+  gold: true,
+  premium: true
 }, {
   label: "Technical charts & indicators",
-  starter: true,
-  pro: true,
-  team: true
+  basic: true,
+  gold: true,
+  premium: true
 }, {
   label: "Fundamental analysis tools",
-  starter: false,
-  pro: true,
-  team: true
+  basic: true,
+  gold: true,
+  premium: true
 }, {
-  label: "Unlimited watchlists",
-  starter: false,
-  pro: true,
-  team: true
+  label: "Trade calls per week",
+  basic: false,
+  gold: true,
+  premium: true
 }, {
-  label: "Portfolio Tracker with benchmarking",
-  starter: false,
-  pro: true,
-  team: true
+  label: "Intraday + positional call mix",
+  basic: false,
+  gold: true,
+  premium: true
 }, {
-  label: "Priority daily briefing",
-  starter: false,
-  pro: true,
-  team: true
+  label: "Algorithm-based PPT (options) service",
+  basic: false,
+  gold: false,
+  premium: true
 }, {
-  label: "Learning Center access",
-  starter: true,
-  pro: true,
-  team: true
+  label: "Dedicated relationship manager",
+  basic: false,
+  gold: true,
+  premium: true
 }, {
-  label: "Price & volume alerts",
-  starter: false,
-  pro: true,
-  team: true
+  label: "Real-time alerts via SMS / WhatsApp",
+  basic: false,
+  gold: true,
+  premium: true
 }, {
-  label: "Shared team watchlists",
-  starter: false,
-  pro: false,
-  team: true
+  label: "Monthly one-on-one strategy call",
+  basic: false,
+  gold: true,
+  premium: true
 }, {
-  label: "Team member seats",
-  starter: false,
-  pro: false,
-  team: true
+  label: "Portfolio review & rebalancing sessions",
+  basic: false,
+  gold: false,
+  premium: true
 }, {
-  label: "Dedicated account support",
-  starter: false,
-  pro: false,
-  team: true
+  label: "Dedicated senior analyst",
+  basic: false,
+  gold: false,
+  premium: true
 }, {
-  label: "Export to CSV / Sheets",
-  starter: false,
-  pro: true,
-  team: true
+  label: "Priority phone & WhatsApp support",
+  basic: false,
+  gold: true,
+  premium: true
 }];
 const INVESTOR_PERSONAS = [{
   tag: "New to Investing",
@@ -2610,6 +2629,13 @@ const PPT_PLAN = {
     "WhatsApp Trade Alerts",
   ],
 };
+
+const PPT_TRUST_POINTS = [
+  "A single, structured 90-trade program — no recurring subscription",
+  "Every trade entry verified by algorithm software before it's sent to you",
+  "Dedicated support team available throughout the 3–4 month service period",
+  "One fee covers the complete program: entries, target, and stop-loss management",
+];
 
 const PPT_TERMS = [
   "Service fee is non-refundable.",
@@ -3151,27 +3177,75 @@ const FAQ_CONTACT = [{
   q: "Can I schedule a product walkthrough for my team?",
   a: "Yes — select \"Partnership\" as your topic and mention you'd like a Team plan walkthrough; our team will follow up to schedule a time."
 }];
-const PRICING = [{
-  name: "Starter",
-  price: "Free",
-  sub: "For new investors getting started",
-  features: ["Core research reports", "1 watchlist (up to 20 stocks)", "Basic technical charts", "Learning Center access"],
-  featured: false,
-  cta: "Get Started"
+const PRICING_DURATIONS = [{
+  id: "1m",
+  label: "1 Month",
+  sub: "Monthly Plan"
 }, {
-  name: "Pro",
-  price: "₹599",
-  sub: "per month — for active investors",
-  features: ["Everything in Starter", "Unlimited watchlists", "Advanced technical indicators", "Portfolio Tracker with benchmarking", "Priority daily briefing"],
+  id: "3m",
+  label: "3 Months",
+  sub: "Quarterly Plan"
+}, {
+  id: "6m-std",
+  label: "6 Months",
+  sub: "Standard 6-Month Plan"
+}, {
+  id: "6m-prem",
+  label: "6 Months Premium",
+  sub: "Premium 6-Month Plan"
+}, {
+  id: "1y",
+  label: "1 Year",
+  sub: "Annual Plan"
+}];
+const PRICING_TABLE = {
+  "1m": {
+    basic: "₹1,20,000",
+    gold: "₹1,75,000",
+    premium: "₹2,00,000 + GST"
+  },
+  "3m": {
+    basic: "₹2,40,000",
+    gold: "₹3,54,000",
+    premium: "₹4,72,000"
+  },
+  "6m-std": {
+    basic: "₹3,54,000",
+    gold: "₹4,72,000",
+    premium: "₹5,90,000"
+  },
+  "6m-prem": {
+    basic: "₹4,00,000",
+    gold: "₹5,00,000",
+    premium: "₹6,00,000"
+  },
+  "1y": {
+    basic: "₹5,90,000",
+    gold: "₹7,04,000",
+    premium: "₹14,16,000"
+  }
+};
+const PACKAGE_TIERS = [{
+  key: "basic",
+  name: "Basic Package",
+  tagline: "A solid research foundation for investors who want clarity before they commit capital.",
+  features: ["Daily market research reports and sector-level analysis", "Access to core technical and fundamental screening tools", "Weekly market outlook with key levels to watch", "Two personalized watchlists with price alerts", "Email support with same-day acknowledgement", "Full access to the Learning Center and beginner guides"],
+  featured: false,
+  cta: "Choose Basic"
+}, {
+  key: "gold",
+  name: "Gold Package",
+  tagline: "Built for active traders who want more frequent calls and a closer line to our desk.",
+  features: ["Everything in the Basic Package", "Higher-frequency trade ideas across intraday and positional setups", "Advanced technical indicators and customizable charting tools", "A dedicated relationship manager for your account", "Real-time trade alerts via SMS and WhatsApp", "Monthly one-on-one strategy call with a research analyst", "Priority phone and WhatsApp support"],
   featured: true,
-  cta: "Start Free Trial"
+  cta: "Choose Gold"
 }, {
-  name: "Team",
-  price: "₹1,499",
-  sub: "per month — for small teams",
-  features: ["Everything in Pro", "Up to 5 team members", "Shared watchlists & notes", "Dedicated account support"],
+  key: "premium",
+  name: "Premium Package",
+  tagline: "Our most comprehensive package, for investors who want a dedicated senior team in their corner.",
+  features: ["Everything in the Gold Package", "Full access to the algorithm-based PPT (options) service", "Dedicated senior analyst assigned to your portfolio", "Portfolio review and rebalancing sessions", "Priority access to premium and sector-deep-dive research", "Highest-priority support with fastest response times"],
   featured: false,
-  cta: "Contact Sales"
+  cta: "Choose Premium"
 }];
 const OFFICES = [{
   k: "Support",
@@ -4544,14 +4618,14 @@ function FeatureMatrix() {
     className: "matrix-scroll"
   }, /*#__PURE__*/React.createElement("table", {
     className: "matrix-table"
-  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Feature"), /*#__PURE__*/React.createElement("th", null, "Starter"), /*#__PURE__*/React.createElement("th", null, "Pro"), /*#__PURE__*/React.createElement("th", null, "Team"))), /*#__PURE__*/React.createElement("tbody", null, FEATURE_MATRIX.map((row, i) => /*#__PURE__*/React.createElement("tr", {
+  }, /*#__PURE__*/React.createElement("thead", null, /*#__PURE__*/React.createElement("tr", null, /*#__PURE__*/React.createElement("th", null, "Feature"), /*#__PURE__*/React.createElement("th", null, "Basic"), /*#__PURE__*/React.createElement("th", null, "Gold"), /*#__PURE__*/React.createElement("th", null, "Premium"))), /*#__PURE__*/React.createElement("tbody", null, FEATURE_MATRIX.map((row, i) => /*#__PURE__*/React.createElement("tr", {
     key: i
   }, /*#__PURE__*/React.createElement("td", null, row.label), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement(Mark, {
-    ok: row.starter
+    ok: row.basic
   })), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement(Mark, {
-    ok: row.pro
+    ok: row.gold
   })), /*#__PURE__*/React.createElement("td", null, /*#__PURE__*/React.createElement(Mark, {
-    ok: row.team
+    ok: row.premium
   }))))))));
 }
 
@@ -5022,18 +5096,30 @@ function PPTService() {
       /*#__PURE__*/React.createElement("p", null, "One structured plan, covering the full 90-trade program.")
     ),
     /*#__PURE__*/React.createElement(Reveal, { delay: 1, className: "ppt-pricing-wrap", style: { marginBottom: 56 } },
-      /*#__PURE__*/React.createElement("div", { className: "ppt-price-card" },
-        /*#__PURE__*/React.createElement("span", { className: "ppt-price-badge" }, PPT_PLAN.badge),
-        /*#__PURE__*/React.createElement("div", { style: { fontFamily: "'Fraunces',serif", fontSize: 22, marginBottom: 6 } }, PPT_PLAN.name),
-        /*#__PURE__*/React.createElement("div", { className: "ppt-price-tagline" }, PPT_PLAN.tagline),
-        /*#__PURE__*/React.createElement("div", { className: "ppt-price-value" }, PPT_PLAN.price),
-        /*#__PURE__*/React.createElement("div", { className: "ppt-price-period" }, PPT_PLAN.period),
-        /*#__PURE__*/React.createElement("div", { className: "ppt-price-features" },
-          PPT_PLAN.features.map((f, i) => /*#__PURE__*/React.createElement("div", { className: "ppt-price-feature", key: i },
-            /*#__PURE__*/React.createElement("span", { className: "chk" }, "✓"), f
-          ))
+      /*#__PURE__*/React.createElement("div", { className: "ppt-pricing-panel" },
+        /*#__PURE__*/React.createElement("div", { className: "ppt-pricing-info" },
+          /*#__PURE__*/React.createElement("div", { className: "kicker" }, "PPT Service Pricing"),
+          /*#__PURE__*/React.createElement("h3", null, "One structured plan, covering the full 90-trade program."),
+          /*#__PURE__*/React.createElement("p", null, "The PPT Service is offered as a single all-inclusive plan rather than tiered subscriptions — everything you need for the full service period is included from day one."),
+          /*#__PURE__*/React.createElement("div", { className: "ppt-pricing-points" },
+            PPT_TRUST_POINTS.map((t, i) => /*#__PURE__*/React.createElement("div", { className: "ppt-pricing-point", key: i },
+              /*#__PURE__*/React.createElement("span", { className: "chk" }, "✓"), t
+            ))
+          )
         ),
-        /*#__PURE__*/React.createElement("a", { href: "#contact", className: "btn block", style: { background: "#fff", color: "var(--ink-900)", borderColor: "#fff" } }, "Join Service")
+        /*#__PURE__*/React.createElement("div", { className: "ppt-price-card" },
+          /*#__PURE__*/React.createElement("span", { className: "ppt-price-badge" }, PPT_PLAN.badge),
+          /*#__PURE__*/React.createElement("div", { style: { fontFamily: "'Fraunces',serif", fontSize: 22, marginBottom: 6 } }, PPT_PLAN.name),
+          /*#__PURE__*/React.createElement("div", { className: "ppt-price-tagline" }, PPT_PLAN.tagline),
+          /*#__PURE__*/React.createElement("div", { className: "ppt-price-value" }, PPT_PLAN.price),
+          /*#__PURE__*/React.createElement("div", { className: "ppt-price-period" }, PPT_PLAN.period),
+          /*#__PURE__*/React.createElement("div", { className: "ppt-price-features" },
+            PPT_PLAN.features.map((f, i) => /*#__PURE__*/React.createElement("div", { className: "ppt-price-feature", key: i },
+              /*#__PURE__*/React.createElement("span", { className: "chk" }, "✓"), f
+            ))
+          ),
+          /*#__PURE__*/React.createElement("a", { href: "#contact", className: "btn block", style: { background: "#fff", color: "var(--ink-900)", borderColor: "#fff" } }, "Join Service")
+        )
       )
     ),
 
@@ -5335,6 +5421,9 @@ function Newsletter() {
    PRICING
    ===================================================================== */
 function Pricing() {
+  const [duration, setDuration] = useState("1m");
+  const activeDuration = PRICING_DURATIONS.find(d => d.id === duration);
+  const prices = PRICING_TABLE[duration];
   return /*#__PURE__*/React.createElement("section", {
     className: "section section-border-b",
     id: "pricing"
@@ -5344,19 +5433,28 @@ function Pricing() {
     className: "section-head center-head"
   }, /*#__PURE__*/React.createElement("div", {
     className: "kicker"
-  }, "Pricing"), /*#__PURE__*/React.createElement("h2", null, "Simple plans for every stage of your journey."), /*#__PURE__*/React.createElement("p", null, "Start free. Upgrade only when you need deeper tools.")), /*#__PURE__*/React.createElement(Reveal, {
+  }, "Pricing"), /*#__PURE__*/React.createElement("h2", null, "Research and advisory packages built around your horizon."), /*#__PURE__*/React.createElement("p", null, "Choose a duration, then pick the level of coverage that matches how actively you trade.")), /*#__PURE__*/React.createElement(Reveal, {
     delay: 1,
+    className: "cat-tabs center-tabs"
+  }, PRICING_DURATIONS.map(d => /*#__PURE__*/React.createElement("div", {
+    key: d.id,
+    className: "cat-tab" + (duration === d.id ? " active" : ""),
+    onClick: () => setDuration(d.id)
+  }, d.label))), /*#__PURE__*/React.createElement(Reveal, {
+    delay: 2,
     className: "pricing-grid"
-  }, PRICING.map((p, i) => /*#__PURE__*/React.createElement("div", {
+  }, PACKAGE_TIERS.map((p, i) => /*#__PURE__*/React.createElement("div", {
     className: "price-card" + (p.featured ? " featured" : ""),
-    key: i
+    key: p.key
   }, /*#__PURE__*/React.createElement("div", {
     className: "plan-name mono"
   }, p.name), /*#__PURE__*/React.createElement("div", {
     className: "plan-price"
-  }, p.price), /*#__PURE__*/React.createElement("div", {
+  }, prices[p.key]), /*#__PURE__*/React.createElement("div", {
     className: "plan-sub"
-  }, p.sub), /*#__PURE__*/React.createElement("div", {
+  }, activeDuration.sub), /*#__PURE__*/React.createElement("p", {
+    className: "plan-tagline"
+  }, p.tagline), /*#__PURE__*/React.createElement("div", {
     className: "plan-features"
   }, p.features.map((f, j) => /*#__PURE__*/React.createElement("div", {
     className: "plan-feature",
@@ -5366,7 +5464,10 @@ function Pricing() {
   }, "✓"), f))), /*#__PURE__*/React.createElement("a", {
     href: "#contact",
     className: "btn block" + (p.featured ? " primary" : "")
-  }, p.cta))))), /*#__PURE__*/React.createElement(FeatureMatrix, null));
+  }, p.cta))))), /*#__PURE__*/React.createElement(Reveal, {
+    delay: 3,
+    className: "pricing-note"
+  }, "GST will be applicable as per government regulations wherever applicable."), /*#__PURE__*/React.createElement(FeatureMatrix, null));
 }
 function CtaBand({
   title,
@@ -5571,7 +5672,7 @@ function Contact() {
     className: "k"
   }, "Email"), /*#__PURE__*/React.createElement("span", {
     className: "v"
-  }, "tradesbharat@gmail.com")), /*#__PURE__*/React.createElement("div", {
+  }, "contact@yourdomain.com")), /*#__PURE__*/React.createElement("div", {
     className: "contact-row"
   }, /*#__PURE__*/React.createElement("span", {
     className: "k"
@@ -5589,7 +5690,7 @@ function Contact() {
     className: "k"
   }, "Website"), /*#__PURE__*/React.createElement("span", {
     className: "v"
-  }, "www.tradesbharat.com"))), /*#__PURE__*/React.createElement("div", {
+  }, "www.yourdomain.com"))), /*#__PURE__*/React.createElement("div", {
     className: "social-row"
   }, /*#__PURE__*/React.createElement("a", {
     href: "#",
