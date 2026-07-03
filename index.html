@@ -816,7 +816,7 @@ nav.navbar{
 /* ---------------------------------------------------------------------
    22. PRICING
    --------------------------------------------------------------------- */
-.pricing-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap:24px; align-items:stretch; }
+.pricing-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap:24px; align-items:stretch; margin-bottom:56px; }
 .price-card{
   border:1px solid var(--line); border-radius: var(--r-lg); padding:36px 32px; background: var(--white);
   display:flex; flex-direction:column; transition: box-shadow var(--dur-fast), transform var(--dur-fast), border-color var(--dur-fast);
@@ -841,7 +841,8 @@ nav.navbar{
 .plan-tagline{ font-size:13.5px; line-height:1.55; color: var(--ink-500); margin-bottom:24px; }
 .price-card.featured .plan-tagline{ color: var(--silver-300); }
 .center-tabs{ justify-content:center; }
-.pricing-note{ text-align:center; font-size:12.5px; color: var(--ink-400); margin:28px 0 56px; }
+.plan-gst-note{ text-align:center; font-size:11.5px; color: var(--ink-400); margin-top:16px; letter-spacing:0.01em; }
+.price-card.featured .plan-gst-note{ color: var(--silver-400); }
 .plan-feature{ display:flex; gap:10px; font-size:13.5px; color: var(--ink-800); align-items:flex-start; }
 .price-card.featured .plan-feature{ color: var(--silver-100); }
 .plan-feature .chk{ color: var(--up); flex-shrink:0; }
@@ -964,6 +965,7 @@ footer{ border-top:1px solid var(--line); padding: 64px 0 34px; background: var(
 .compare-table th.mv-col{ background: var(--ink-900); color: var(--white); }
 .compare-yes{ color: var(--up); font-weight:700; }
 .compare-no{ color: var(--silver-400); }
+.compare-val{ color: var(--ink-800); font-size:12.5px; font-weight:600; }
 .compare-scroll{ overflow-x:auto; border-radius: var(--r-md); }
 
 /* ---------------------------------------------------------------------
@@ -2507,10 +2509,10 @@ const FEATURE_MATRIX = [{
   gold: true,
   premium: true
 }, {
-  label: "Trade calls per week",
-  basic: false,
-  gold: true,
-  premium: true
+  label: "Trade calls delivered daily",
+  basic: "1 / day",
+  gold: "2–3 / day",
+  premium: "4–5 / day + BTST"
 }, {
   label: "Intraday + positional call mix",
   basic: false,
@@ -3202,7 +3204,7 @@ const PRICING_TABLE = {
   "1m": {
     basic: "₹1,20,000",
     gold: "₹1,75,000",
-    premium: "₹2,00,000 + GST"
+    premium: "₹2,00,000"
   },
   "3m": {
     basic: "₹2,40,000",
@@ -3229,21 +3231,21 @@ const PACKAGE_TIERS = [{
   key: "basic",
   name: "Basic Package",
   tagline: "A solid research foundation for investors who want clarity before they commit capital.",
-  features: ["Daily market research reports and sector-level analysis", "Access to core technical and fundamental screening tools", "Weekly market outlook with key levels to watch", "Two personalized watchlists with price alerts", "Email support with same-day acknowledgement", "Full access to the Learning Center and beginner guides"],
+  features: ["1 researched trade call delivered daily", "Daily market research reports and sector-level analysis", "Access to core technical and fundamental screening tools", "Weekly market outlook with key levels to watch", "Two personalized watchlists with price alerts", "Email support with same-day acknowledgement", "Full access to the Learning Center and beginner guides"],
   featured: false,
   cta: "Choose Basic"
 }, {
   key: "gold",
   name: "Gold Package",
   tagline: "Built for active traders who want more frequent calls and a closer line to our desk.",
-  features: ["Everything in the Basic Package", "Higher-frequency trade ideas across intraday and positional setups", "Advanced technical indicators and customizable charting tools", "A dedicated relationship manager for your account", "Real-time trade alerts via SMS and WhatsApp", "Monthly one-on-one strategy call with a research analyst", "Priority phone and WhatsApp support"],
+  features: ["2 to 3 researched trade calls delivered daily", "Everything in the Basic Package", "Higher-frequency trade ideas across intraday and positional setups", "Advanced technical indicators and customizable charting tools", "A dedicated relationship manager for your account", "Real-time trade alerts via SMS and WhatsApp", "Monthly one-on-one strategy call with a research analyst", "Priority phone and WhatsApp support"],
   featured: true,
   cta: "Choose Gold"
 }, {
   key: "premium",
   name: "Premium Package",
   tagline: "Our most comprehensive package, for investors who want a dedicated senior team in their corner.",
-  features: ["Everything in the Gold Package", "Full access to the algorithm-based PPT (options) service", "Dedicated senior analyst assigned to your portfolio", "Portfolio review and rebalancing sessions", "Priority access to premium and sector-deep-dive research", "Highest-priority support with fastest response times"],
+  features: ["4 to 5 researched trade calls delivered daily, including BTST (Buy Today Sell Tomorrow) level trades", "Everything in the Gold Package", "Dedicated senior analyst assigned to your portfolio", "Portfolio review and rebalancing sessions", "Priority access to premium and sector-deep-dive research", "Highest-priority support with fastest response times"],
   featured: false,
   cta: "Choose Premium"
 }];
@@ -4589,11 +4591,18 @@ function TrustBadges() {
 function FeatureMatrix() {
   const Mark = ({
     ok
-  }) => ok ? /*#__PURE__*/React.createElement("span", {
-    className: "compare-yes"
-  }, "✓") : /*#__PURE__*/React.createElement("span", {
-    className: "compare-no"
-  }, "—");
+  }) => {
+    if (typeof ok === "string") {
+      return /*#__PURE__*/React.createElement("span", {
+        className: "compare-val mono"
+      }, ok);
+    }
+    return ok ? /*#__PURE__*/React.createElement("span", {
+      className: "compare-yes"
+    }, "✓") : /*#__PURE__*/React.createElement("span", {
+      className: "compare-no"
+    }, "—");
+  };
   return /*#__PURE__*/React.createElement("div", {
     className: "wrap"
   }, /*#__PURE__*/React.createElement(Reveal, {
@@ -4796,7 +4805,7 @@ function WhatsAppButton() {
     className: "wa-tooltip"
   }, "Chat on WhatsApp"), /*#__PURE__*/React.createElement("a", {
     className: "wa-button",
-    href: "https://wa.me/91XXXXXXXXXX?text=" + encodeURIComponent("Hi Trades Bharat, I'd like to know more."),
+    href: "https://wa.me/918976215268?text=" + encodeURIComponent("Hi Trades Bharat, I'd like to know more."),
     target: "_blank",
     rel: "noopener noreferrer",
     "aria-label": "Chat with Trades Bharat on WhatsApp"
@@ -5406,6 +5415,7 @@ function Pricing() {
   const [duration, setDuration] = useState("1m");
   const activeDuration = PRICING_DURATIONS.find(d => d.id === duration);
   const prices = PRICING_TABLE[duration];
+  const pptEligible = ["6m-std", "6m-prem", "1y"].includes(duration);
   return /*#__PURE__*/React.createElement("section", {
     className: "section section-border-b",
     id: "pricing"
@@ -5425,31 +5435,36 @@ function Pricing() {
   }, d.label))), /*#__PURE__*/React.createElement(Reveal, {
     delay: 2,
     className: "pricing-grid"
-  }, PACKAGE_TIERS.map((p, i) => /*#__PURE__*/React.createElement("div", {
-    className: "price-card" + (p.featured ? " featured" : ""),
-    key: p.key
-  }, /*#__PURE__*/React.createElement("div", {
-    className: "plan-name mono"
-  }, p.name), /*#__PURE__*/React.createElement("div", {
-    className: "plan-price"
-  }, prices[p.key]), /*#__PURE__*/React.createElement("div", {
-    className: "plan-sub"
-  }, activeDuration.sub), /*#__PURE__*/React.createElement("p", {
-    className: "plan-tagline"
-  }, p.tagline), /*#__PURE__*/React.createElement("div", {
-    className: "plan-features"
-  }, p.features.map((f, j) => /*#__PURE__*/React.createElement("div", {
-    className: "plan-feature",
-    key: j
-  }, /*#__PURE__*/React.createElement("span", {
-    className: "chk"
-  }, "✓"), f))), /*#__PURE__*/React.createElement("a", {
-    href: "#contact",
-    className: "btn block" + (p.featured ? " primary" : "")
-  }, p.cta))))), /*#__PURE__*/React.createElement(Reveal, {
-    delay: 3,
-    className: "pricing-note"
-  }, "GST will be applicable as per government regulations wherever applicable."), /*#__PURE__*/React.createElement(FeatureMatrix, null));
+  }, PACKAGE_TIERS.map((p, i) => {
+    let features = p.features;
+    if (p.key === "premium") {
+      features = pptEligible ? [...p.features, "Full access to the algorithm-based PPT (options) service"] : [...p.features, "Priority onboarding with your dedicated analyst within 24 hours"];
+    }
+    return /*#__PURE__*/React.createElement("div", {
+      className: "price-card" + (p.featured ? " featured" : ""),
+      key: p.key
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "plan-name mono"
+    }, p.name), /*#__PURE__*/React.createElement("div", {
+      className: "plan-price"
+    }, prices[p.key]), /*#__PURE__*/React.createElement("div", {
+      className: "plan-sub"
+    }, activeDuration.sub), /*#__PURE__*/React.createElement("p", {
+      className: "plan-tagline"
+    }, p.tagline), /*#__PURE__*/React.createElement("div", {
+      className: "plan-features"
+    }, features.map((f, j) => /*#__PURE__*/React.createElement("div", {
+      className: "plan-feature",
+      key: j
+    }, /*#__PURE__*/React.createElement("span", {
+      className: "chk"
+    }, "✓"), f))), /*#__PURE__*/React.createElement("a", {
+      href: "#contact",
+      className: "btn block" + (p.featured ? " primary" : "")
+    }, p.cta), /*#__PURE__*/React.createElement("p", {
+      className: "plan-gst-note"
+    }, "+ 18% GST applicable additionally, as per government regulations."));
+  }))), /*#__PURE__*/React.createElement(FeatureMatrix, null));
 }
 function CtaBand({
   title,
@@ -5652,15 +5667,26 @@ function Contact() {
     className: "contact-row"
   }, /*#__PURE__*/React.createElement("span", {
     className: "k"
-  }, "Email"), /*#__PURE__*/React.createElement("span", {
-    className: "v"
-  }, "contact@yourdomain.com")), /*#__PURE__*/React.createElement("div", {
+  }, "Email"), /*#__PURE__*/React.createElement("a", {
+    className: "v",
+    href: "mailto:trdsbharat@gmail.com"
+  }, "trdsbharat@gmail.com")), /*#__PURE__*/React.createElement("div", {
     className: "contact-row"
   }, /*#__PURE__*/React.createElement("span", {
     className: "k"
-  }, "Phone"), /*#__PURE__*/React.createElement("span", {
-    className: "v"
-  }, "+91 XXXXXXXXXX")), /*#__PURE__*/React.createElement("div", {
+  }, "Phone"), /*#__PURE__*/React.createElement("a", {
+    className: "v",
+    href: "tel:+918976215268"
+  }, "+91 89762 15268")), /*#__PURE__*/React.createElement("div", {
+    className: "contact-row"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "k"
+  }, "WhatsApp"), /*#__PURE__*/React.createElement("a", {
+    className: "v",
+    href: "https://wa.me/918976215268",
+    target: "_blank",
+    rel: "noopener noreferrer"
+  }, "+91 89762 15268")), /*#__PURE__*/React.createElement("div", {
     className: "contact-row"
   }, /*#__PURE__*/React.createElement("span", {
     className: "k"
