@@ -575,6 +575,16 @@ nav.navbar{
 .pillar .t{ font-size:15.5px; color:var(--ink-900); font-weight:600; margin-bottom:4px; }
 .pillar .d{ font-size:13.5px; color: var(--ink-400); }
 
+.story-layout{ display:grid; grid-template-columns: 300px 1fr; gap:64px; align-items:start; }
+.story-heading{ position:sticky; top:110px; }
+.story-heading .kicker{ margin-bottom:14px; }
+.story-heading h2{ font-size: clamp(28px,3vw,36px); line-height:1.15; margin-bottom:14px; }
+.story-heading p{ color: var(--ink-600); font-size:15.5px; max-width:280px; }
+@media (max-width: 900px){
+  .story-layout{ grid-template-columns: 1fr; gap:28px; }
+  .story-heading{ position:static; }
+  .story-heading p{ max-width:none; }
+}
 .timeline{ border-left:2px solid var(--line); margin-left:8px; }
 .tl-item{ position:relative; padding: 0 0 44px 34px; }
 .tl-item:last-child{ padding-bottom:0; }
@@ -596,19 +606,12 @@ nav.navbar{
 .value-card h4{ font-size:16px; color: var(--ink-900); margin-bottom:8px; font-family:'Inter',sans-serif; font-weight:600; }
 .value-card p{ font-size:13.5px; color: var(--ink-600); }
 
-.team-grid{ display:grid; grid-template-columns: repeat(4,1fr); gap:26px; }
-.team-card{ border:1px solid var(--line); border-radius: var(--r-md); padding:24px; background: var(--white); transition: box-shadow var(--dur-fast), transform var(--dur-fast); }
-.team-card:hover{ box-shadow: var(--shadow-md); transform: translateY(-4px); }
-.avatar{
-  width:100%; aspect-ratio:1; border-radius: var(--r-sm); margin-bottom:18px;
-  background: linear-gradient(150deg, var(--silver-100), var(--silver-200));
-  border:1px solid var(--line);
-  display:flex; align-items:center; justify-content:center;
-  font-family:'Fraunces',serif; font-size:30px; color: var(--accent-700);
-}
-.team-card h4{ font-size:15.5px; color: var(--ink-900); margin-bottom:3px; font-family:'Inter',sans-serif; font-weight:600; }
-.team-card .role{ font-size:12.5px; color: var(--accent-700); font-family:'IBM Plex Mono',monospace; margin-bottom:12px; }
-.team-card p{ font-size:13px; color: var(--ink-400); }
+.team-grid{ display:grid; grid-template-columns: repeat(3,1fr); gap:22px; }
+.team-card{ border:1px solid var(--line); border-radius: var(--r-md); padding:26px 24px; background: var(--white); transition: box-shadow var(--dur-fast), transform var(--dur-fast); }
+.team-card:hover{ box-shadow: var(--shadow-md); transform: translateY(-4px); border-color: var(--silver-400); }
+.team-card h4{ font-size:16px; color: var(--ink-900); margin-bottom:8px; font-family:'Inter',sans-serif; font-weight:600; }
+.team-card .degree{ font-size:13px; color: var(--ink-600); line-height:1.5; margin-bottom:12px; }
+.team-card .exp{ font-size:11.5px; color: var(--accent-700); letter-spacing:0.02em; }
 
 /* ---------------------------------------------------------------------
    12. SERVICES
@@ -1806,41 +1809,29 @@ const VALUES = [{
   d: "We'd rather teach you to fish than hand you a single trade idea."
 }];
 const TEAM = [{
-  i: "A",
   n: "Aditya Sharma",
-  r: "Founder & CEO",
-  d: "Former equity research analyst focused on making markets understandable for everyone.",
-  photo: "https://loremflickr.com/300/300/businessman,portrait?lock=111"
+  degree: "MBA (Finance), CFA Level III",
+  exp: "10+ years in equity research"
 }, {
-  i: "P",
   n: "Priya Nair",
-  r: "Head of Research",
-  d: "Leads fundamental & sector research, with a background in financial journalism.",
-  photo: "https://loremflickr.com/300/300/businesswoman,portrait?lock=112"
+  degree: "M.Com, NISM Certified Research Analyst",
+  exp: "8+ years in fundamental & sector research"
 }, {
-  i: "K",
   n: "Karan Mehta",
-  r: "Head of Product & Engineering",
-  d: "Builds the platform and data infrastructure powering Trades Bharat's tools.",
-  photo: "https://loremflickr.com/300/300/businessman,portrait?lock=113"
+  degree: "B.Tech, Computer Science",
+  exp: "9+ years building fintech & trading platforms"
 }, {
-  i: "S",
   n: "Sana Iyer",
-  r: "Head of Learning Center",
-  d: "Designs the educational curriculum for beginner through advanced investors.",
-  photo: "https://loremflickr.com/300/300/businesswoman,portrait?lock=114"
+  degree: "MBA (Finance), NISM Certified",
+  exp: "7+ years in financial education & training"
 }, {
-  i: "R",
   n: "Rahul Desai",
-  r: "Head of Technical Research",
-  d: "Specializes in charting systems and quantitative pattern detection.",
-  photo: "https://loremflickr.com/300/300/businessman,portrait?lock=115"
+  degree: "CMT (Chartered Market Technician)",
+  exp: "11+ years in technical research"
 }, {
-  i: "N",
   n: "Neha Kulkarni",
-  r: "Head of Customer Success",
-  d: "Leads onboarding and support so every investor gets real answers, fast.",
-  photo: "https://loremflickr.com/300/300/businesswoman,portrait?lock=116"
+  degree: "MBA (Marketing & Operations)",
+  exp: "6+ years in client success & support"
 }];
 
 // Interactive tool showcase — tabs for the animated "product preview" section
@@ -3822,13 +3813,15 @@ function About() {
     alt: "The Trades Bharat research team at work",
     loading: "lazy"
   }))), /*#__PURE__*/React.createElement("div", {
-    className: "wrap",
+    className: "wrap story-layout",
     style: {
       marginTop: 96
     }
   }, /*#__PURE__*/React.createElement(Reveal, {
-    className: "section-head"
-  }, /*#__PURE__*/React.createElement("h2", null, "Our Story"), /*#__PURE__*/React.createElement("p", null, "From a small research newsletter to a full market intelligence platform.")), /*#__PURE__*/React.createElement(Reveal, {
+    className: "story-heading"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "kicker"
+  }, "Our Story"), /*#__PURE__*/React.createElement("h2", null, "From an idea to a full platform."), /*#__PURE__*/React.createElement("p", null, "From a small research newsletter to a full market intelligence platform.")), /*#__PURE__*/React.createElement(Reveal, {
     delay: 1,
     className: "timeline"
   }, TIMELINE.map((t, i) => /*#__PURE__*/React.createElement("div", {
@@ -3851,7 +3844,24 @@ function About() {
     key: i
   }, /*#__PURE__*/React.createElement("div", {
     className: "num mono"
-  }, v.n), /*#__PURE__*/React.createElement("h4", null, v.t), /*#__PURE__*/React.createElement("p", null, v.d))))));
+  }, v.n), /*#__PURE__*/React.createElement("h4", null, v.t), /*#__PURE__*/React.createElement("p", null, v.d))))), /*#__PURE__*/React.createElement("div", {
+    className: "wrap",
+    style: {
+      marginTop: 96
+    }
+  }, /*#__PURE__*/React.createElement(Reveal, {
+    className: "section-head"
+  }, /*#__PURE__*/React.createElement("h2", null, "Our Team"), /*#__PURE__*/React.createElement("p", null, "A qualified team of analysts and researchers behind every report and trade call.")), /*#__PURE__*/React.createElement(Reveal, {
+    delay: 1,
+    className: "team-grid"
+  }, TEAM.map((m, i) => /*#__PURE__*/React.createElement("div", {
+    className: "team-card",
+    key: i
+  }, /*#__PURE__*/React.createElement("h4", null, m.n), /*#__PURE__*/React.createElement("div", {
+    className: "degree"
+  }, m.degree), /*#__PURE__*/React.createElement("div", {
+    className: "exp mono"
+  }, m.exp))))));
 }
 
 /* =====================================================================
