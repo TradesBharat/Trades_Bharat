@@ -82,13 +82,13 @@
   --ink-600:      #4B5468;
   --ink-400:      #838DA0;
 
-  /* Primary accent — deep navy blue, sampled from the Trades Bharat logo */
-  --accent-900:   #0A2148;
-  --accent-800:   #0F2E5E;
-  --accent-700:   #123A6E;
-  --accent-500:   #1E56A8;
-  --accent-300:   #7FA8DE;
-  --accent-100:   #E2ECFB;
+  /* Primary accent — bold vibrant indigo, bright modern SaaS energy */
+  --accent-900:   #312E81;
+  --accent-800:   #3730A3;
+  --accent-700:   #4F46E5;
+  --accent-500:   #6366F1;
+  --accent-300:   #A5B4FC;
+  --accent-100:   #E0E7FF;
 
   /* Secondary accents — used sparingly for variety across cards, tags & icons */
   --teal-700:     #0D7A70;
@@ -107,15 +107,15 @@
   --rose-500:     #E85D9A;
   --rose-100:     #FBE3EF;
 
-  /* Brand orange — sampled from the logo's "BHARAT" wordmark & candle highlight */
-  --orange-700:   #C25A0A;
-  --orange-500:   #EE7A16;
-  --orange-100:   #FEEBD9;
+  /* Bold secondary — vibrant fuchsia, pairs with indigo for the gradient system */
+  --orange-700:   #A21CAF;
+  --orange-500:   #D946EF;
+  --orange-100:   #FAE8FF;
 
   /* Semantic */
   --up:           #1F9D57;
   --down:         #D14A3D;
-  --gold:         #E8720A;
+  --gold:         #D946EF;
 
   /* Surfaces */
   --surface-0:    var(--white);
@@ -125,26 +125,32 @@
   --line:         var(--silver-200);
   --line-soft:    var(--silver-150);
 
-  /* Shadows — soft, layered, "brushed steel" */
-  --shadow-xs:    0 1px 2px rgba(16,19,26,0.04);
-  --shadow-sm:    0 2px 8px rgba(16,19,26,0.06);
-  --shadow-md:    0 8px 24px rgba(16,19,26,0.08);
-  --shadow-lg:    0 20px 48px rgba(16,19,26,0.10);
-  --shadow-inset: inset 0 1px 0 rgba(255,255,255,0.6);
-  --shadow-accent: 0 10px 28px rgba(26,79,160,0.18);
+  /* Glass surfaces — translucent, blurred panels over the gradient mesh */
+  --glass-bg:      rgba(255,255,255,0.6);
+  --glass-bg-soft: rgba(255,255,255,0.42);
+  --glass-border:  rgba(255,255,255,0.7);
+  --glass-blur:    blur(20px) saturate(1.8);
 
-  /* Radius */
+  /* Shadows — deeper, softer, more luxurious falloff */
+  --shadow-xs:    0 1px 2px rgba(10,15,28,0.05);
+  --shadow-sm:    0 4px 14px rgba(10,15,28,0.07);
+  --shadow-md:    0 14px 36px rgba(10,15,28,0.10);
+  --shadow-lg:    0 28px 64px rgba(10,15,28,0.14);
+  --shadow-inset: inset 0 1px 0 rgba(255,255,255,0.6);
+  --shadow-accent: 0 16px 40px rgba(10,33,72,0.22);
+
+  /* Radius — slightly more generous for a softer premium feel */
   --r-xs: 4px;
-  --r-sm: 8px;
-  --r-md: 14px;
-  --r-lg: 22px;
+  --r-sm: 10px;
+  --r-md: 16px;
+  --r-lg: 26px;
   --r-full: 999px;
 
   /* Type scale */
-  --fs-display: clamp(40px, 5.6vw, 76px);
-  --fs-h1: clamp(32px, 4vw, 52px);
-  --fs-h2: clamp(26px, 3.2vw, 40px);
-  --fs-h3: clamp(20px, 2.2vw, 26px);
+  --fs-display: clamp(44px, 6vw, 84px);
+  --fs-h1: clamp(34px, 4.4vw, 58px);
+  --fs-h2: clamp(28px, 3.4vw, 44px);
+  --fs-h3: clamp(20px, 2.2vw, 27px);
   --fs-body: 16px;
   --fs-sm: 14px;
   --fs-xs: 12.5px;
@@ -155,6 +161,82 @@
   --dur-fast: 220ms;
   --dur-med: 420ms;
   --dur-slow: 700ms;
+}
+
+/* ---------------------------------------------------------------------
+   1b. DARK THEME OVERRIDES — activated via [data-theme="dark"] on <html>.
+   Nearly every color in this file is a var(--...) reference, so
+   repainting these tokens re-themes the whole site.
+   --------------------------------------------------------------------- */
+[data-theme="dark"]{
+  --white:        #161B26;
+  --silver-25:    #12151D;
+  --silver-50:    #1A1F2B;
+  --silver-100:   #212734;
+  --silver-150:   #2A303F;
+  --silver-200:   #343B4C;
+  --silver-300:   #454D61;
+  --silver-400:   #5C6479;
+  --silver-500:   #7C8499;
+  --silver-600:   #9AA1B5;
+  --silver-700:   #B9C0D2;
+  --silver-800:   #DADFEB;
+  --silver-900:   #F0F2F8;
+
+  --ink-900:      #F5F7FB;
+  --ink-800:      #E4E8F1;
+  --ink-600:      #AFB6C9;
+  --ink-400:      #7C859C;
+
+  --accent-100:   #2A2A6E;
+  --accent-300:   #6366F1;
+
+  --teal-100:     #113732;
+  --violet-100:   #2A2049;
+  --coral-100:    #3B2313;
+  --rose-100:     #3A1F2C;
+  --orange-100:   #4A1259;
+
+  --line:         var(--silver-200);
+  --line-soft:    var(--silver-150);
+
+  --shadow-xs:    0 1px 2px rgba(0,0,0,0.35);
+  --shadow-sm:    0 2px 8px rgba(0,0,0,0.4);
+  --shadow-md:    0 8px 24px rgba(0,0,0,0.45);
+  --shadow-lg:    0 20px 48px rgba(0,0,0,0.5);
+  --shadow-inset: inset 0 1px 0 rgba(255,255,255,0.04);
+  --shadow-accent: 0 10px 28px rgba(0,0,0,0.5);
+}
+
+/* Hero text sits on a fixed navy illustration (not theme-aware) and uses
+   a light halo (text-shadow) for contrast, so its ink color must stay
+   dark in both themes rather than flipping light in dark mode. */
+[data-theme="dark"] .hero h1,
+[data-theme="dark"] .hero p.lead,
+[data-theme="dark"] .hero .trust-rating span,
+[data-theme="dark"] .hero .trust-label-line,
+[data-theme="dark"] .hero .hstat .num,
+[data-theme="dark"] .hero .hstat .label{
+  color: #1D2230;
+}
+
+/* THEME TOGGLE BUTTON — sun/moon icon swap */
+.theme-toggle{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:38px; height:38px; border-radius: var(--r-full);
+  background: var(--surface-2); border:1px solid var(--line);
+  color: var(--ink-800); cursor:pointer; flex-shrink:0;
+  transition: background var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
+}
+.theme-toggle:hover{ background: var(--surface-3); }
+.theme-toggle svg{ width:18px; height:18px; }
+.theme-toggle .icon-sun{ display:none; }
+[data-theme="dark"] .theme-toggle .icon-moon{ display:none; }
+[data-theme="dark"] .theme-toggle .icon-sun{ display:block; }
+.mobile-theme-row{
+  display:flex; align-items:center; justify-content:space-between;
+  padding: 10px 4px 16px; margin-bottom: 6px; border-bottom: 1px solid var(--line);
+  font-size: var(--fs-sm); font-weight:600; color: var(--ink-800);
 }
 
 /* ---------------------------------------------------------------------
@@ -172,6 +254,22 @@ body{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  position: relative;
+}
+/* Ambient gradient mesh — fixed behind all content, gives the glass
+   panels (nav, cards) something colorful to blur/refract. */
+body::before{
+  content:""; position: fixed; inset:0; z-index:-1; pointer-events:none;
+  background:
+    radial-gradient(680px 520px at 8% 0%, rgba(99,102,241,0.16), transparent 62%),
+    radial-gradient(620px 520px at 96% 10%, rgba(217,70,239,0.14), transparent 60%),
+    radial-gradient(700px 560px at 50% 100%, rgba(34,211,238,0.12), transparent 62%);
+}
+[data-theme="dark"] body::before{
+  background:
+    radial-gradient(680px 520px at 8% 0%, rgba(99,102,241,0.22), transparent 62%),
+    radial-gradient(620px 520px at 96% 10%, rgba(217,70,239,0.20), transparent 60%),
+    radial-gradient(700px 560px at 50% 100%, rgba(34,211,238,0.16), transparent 62%);
 }
 h1,h2,h3,h4{
   font-family: 'Fraunces', serif;
@@ -198,24 +296,24 @@ input, textarea, select{ font-family: inherit; font-size: inherit; }
 /* ---------------------------------------------------------------------
    3. UTILITY CLASSES
    --------------------------------------------------------------------- */
-.wrap{ max-width: 1200px; margin: 0 auto; padding: 0 32px; }
-.section{ padding: 112px 0; position: relative; }
-.section-tight{ padding: 80px 0; }
+.wrap{ max-width: 1220px; margin: 0 auto; padding: 0 32px; }
+.section{ padding: 132px 0; position: relative; }
+.section-tight{ padding: 88px 0; }
 .section-border-b{ border-bottom: 1px solid var(--line); }
 .center{ text-align: center; }
 .kicker{
-  display:inline-flex; align-items:center; gap:8px;
+  display:inline-flex; align-items:center; gap:10px;
   font-family:'IBM Plex Mono', monospace;
-  font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase;
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; font-weight:600;
   color: var(--accent-700);
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 .kicker::before{
-  content:""; width:16px; height:1px; background: var(--accent-500);
+  content:""; width:22px; height:1px; background: linear-gradient(90deg, var(--accent-500), var(--gold));
 }
 .section-head{
   display:grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px;
-  align-items: end; margin-bottom: 64px;
+  align-items: end; margin-bottom: 72px;
 }
 .section-head.center-head{ grid-template-columns: 1fr; justify-items:center; text-align:center; }
 .section-head h2{ font-size: var(--fs-h2); line-height:1.15; }
@@ -235,20 +333,21 @@ input, textarea, select{ font-family: inherit; font-size: inherit; }
 /* Buttons */
 .btn{
   display:inline-flex; align-items:center; justify-content:center; gap:8px;
-  padding: 14px 26px; font-size: 14px; font-weight:600; letter-spacing:0.01em;
-  border-radius: var(--r-sm); border: 1px solid var(--silver-300);
-  background: var(--white); color: var(--ink-800);
+  padding: 15px 28px; font-size: 13.5px; font-weight:600; letter-spacing:0.02em;
+  border-radius: var(--r-full); border: 1px solid var(--glass-border);
+  background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+  color: var(--ink-800);
   transition: transform var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out), border-color var(--dur-fast), background var(--dur-fast);
   position: relative; overflow:hidden; isolation:isolate;
 }
-.btn:hover{ transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--silver-400); }
+.btn:hover{ transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--accent-300); }
 .btn:active{ transform: translateY(0); }
 .btn.primary{
-  background: linear-gradient(180deg, var(--accent-700), var(--accent-900));
-  color: var(--white); border-color: var(--accent-900);
-  box-shadow: var(--shadow-sm);
+  background: linear-gradient(120deg, var(--accent-700), var(--gold));
+  color: var(--white); border-color: transparent;
+  box-shadow: 0 12px 32px rgba(99,102,241,0.35), 0 4px 16px rgba(217,70,239,0.25);
 }
-.btn.primary:hover{ box-shadow: var(--shadow-lg); }
+.btn.primary:hover{ box-shadow: 0 18px 44px rgba(99,102,241,0.45), 0 6px 22px rgba(217,70,239,0.35); }
 .btn.primary::after{
   content:""; position:absolute; inset:0; z-index:-1;
   background: linear-gradient(120deg, transparent 20%, rgba(255,255,255,0.22) 40%, transparent 60%);
@@ -263,8 +362,9 @@ input, textarea, select{ font-family: inherit; font-size: inherit; }
 
 /* Cards / panels — brushed-steel surface */
 .panel{
-  background: var(--white);
-  border: 1px solid var(--line);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
   border-radius: var(--r-md);
   box-shadow: var(--shadow-sm);
 }
@@ -332,22 +432,29 @@ input, textarea, select{ font-family: inherit; font-size: inherit; }
    --------------------------------------------------------------------- */
 header.site{
   position: sticky; top:0; z-index: 100;
-  background: rgba(255,255,255,0.82);
-  backdrop-filter: blur(14px) saturate(1.4);
-  border-bottom: 1px solid var(--line);
+  background: var(--glass-bg-soft);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border-bottom: 1px solid var(--glass-border);
   transition: box-shadow var(--dur-fast) ease, background var(--dur-fast) ease;
 }
-header.site.scrolled{ box-shadow: var(--shadow-sm); background: rgba(255,255,255,0.94); }
-nav.navbar{
-  display:flex; align-items:center; justify-content:space-between; height: 76px; position:relative;
+header.site::after{
+  content:""; position:absolute; left:0; right:0; bottom:-1px; height:1px;
+  background: linear-gradient(90deg, transparent, var(--accent-500), var(--gold), transparent);
+  opacity:0.5;
 }
-.brand{ display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-size:20px; font-weight:600; color: var(--ink-900); }
+header.site.scrolled{ box-shadow: var(--shadow-md); background: var(--glass-bg); }
+nav.navbar{
+  display:flex; align-items:center; justify-content:space-between; height: 80px; position:relative;
+}
+.brand{ display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-size:21px; font-weight:600; color: var(--ink-900); letter-spacing:-0.01em; }
 .brand .mark{
   width:auto; height:38px; display:block; object-fit:contain;
 }
-.nav-links{ display:flex; gap: 8px; align-items:center; }
+.nav-links{ display:flex; gap: 4px; align-items:center; }
 .nav-links a{
-  font-size:14px; color: var(--ink-600); font-weight:500; padding: 10px 16px; border-radius: var(--r-sm);
+  font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase;
+  color: var(--ink-600); font-weight:500; padding: 10px 15px; border-radius: var(--r-full);
   transition: color var(--dur-fast), background var(--dur-fast);
   position:relative;
 }
@@ -471,12 +578,12 @@ nav.navbar{
   position:absolute; width: 360px; height:360px; border-radius:50%;
   filter: blur(4px);
 }
-.hero-orb.a{ top:-60px; right: 6%; background: radial-gradient(circle at 32% 32%, rgba(30,86,168,0.20), transparent 68%); }
-.hero-orb.b{ bottom:-100px; left: -4%; width:280px; height:280px; background: radial-gradient(circle at 32% 32%, rgba(238,122,22,0.18), transparent 68%); }
+.hero-orb.a{ top:-60px; right: 6%; background: radial-gradient(circle at 32% 32%, rgba(99,102,241,0.35), transparent 68%); }
+.hero-orb.b{ bottom:-100px; left: -4%; width:320px; height:320px; background: radial-gradient(circle at 32% 32%, rgba(217,70,239,0.30), transparent 68%); }
 .hero-content{
   display:grid; grid-template-columns: 1.08fr 0.92fr; gap: 44px; align-items:center; position:relative; z-index:1;
 }
-.hero h1{ font-size: clamp(28px, 3.4vw, 42px); line-height:1.08; margin-bottom: 12px; text-shadow: 0 1px 20px rgba(255,255,255,0.85); }
+.hero h1{ font-size: clamp(30px, 3.8vw, 46px); line-height:1.06; margin-bottom: 14px; text-shadow: 0 1px 20px rgba(255,255,255,0.85); }
 .hero h1 .accent-word{
   background: linear-gradient(100deg, var(--accent-900), var(--accent-500) 55%, var(--orange-500));
   -webkit-background-clip: text; background-clip: text; color: transparent;
@@ -509,12 +616,14 @@ nav.navbar{
 
 /* Hero market snapshot card */
 .chart-card{
-  border-radius: var(--r-lg); border:1px solid var(--line); background: var(--white);
-  box-shadow: var(--shadow-lg); padding: 20px 20px 6px; position:relative;
+  border-radius: var(--r-lg); border:1px solid var(--glass-border);
+  background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--shadow-lg), 0 0 60px rgba(99,102,241,0.18); padding: 24px 24px 8px; position:relative;
   transform: perspective(1200px) rotateY(-4deg) rotateX(2deg);
-  transition: transform var(--dur-med) var(--ease-out);
+  transition: transform var(--dur-med) var(--ease-out), box-shadow var(--dur-med) var(--ease-out);
   max-width: 420px; margin-left:auto;
 }
+.chart-card:hover{ box-shadow: var(--shadow-lg), 0 0 80px rgba(217,70,239,0.28); }
 .chart-card:hover{ transform: perspective(1200px) rotateY(0deg) rotateX(0deg); }
 .chart-card-head{ display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 6px; padding-bottom:14px; border-bottom:1px solid var(--line-soft); }
 .chart-card-head .sym{ font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--ink-900); font-weight:600; letter-spacing:0.02em; }
@@ -552,7 +661,7 @@ nav.navbar{
 /* ---------------------------------------------------------------------
    10. STATS COUNTER STRIP
    --------------------------------------------------------------------- */
-.stats-strip{ display:grid; grid-template-columns: repeat(4,1fr); border:1px solid var(--line); border-radius: var(--r-md); overflow:hidden; background: var(--white); box-shadow: var(--shadow-sm); }
+.stats-strip{ display:grid; grid-template-columns: repeat(4,1fr); border:1px solid var(--glass-border); border-radius: var(--r-md); overflow:hidden; background: var(--glass-bg); backdrop-filter: var(--glass-blur); -webkit-backdrop-filter: var(--glass-blur); box-shadow: var(--shadow-sm); }
 .stat-cell{ padding: 36px 30px; border-right:1px solid var(--line); position:relative; }
 .stat-cell:last-child{ border-right:none; }
 .stat-cell .num{ font-family:'IBM Plex Mono',monospace; font-size:32px; color: var(--ink-900); font-weight:600; }
@@ -1598,6 +1707,52 @@ const {
   useRef,
   useCallback
 } = React;
+
+/* =====================================================================
+   THEME — dark/light toggle, persisted via localStorage, respects the
+   visitor's OS preference on first visit.
+   ===================================================================== */
+function useTheme() {
+  const [theme, setTheme] = useState(() => {
+    try {
+      const saved = localStorage.getItem('tb-theme');
+      if (saved) return saved;
+      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    } catch (e) { return 'light'; }
+  });
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    try { localStorage.setItem('tb-theme', theme); } catch (e) {}
+  }, [theme]);
+  const toggleTheme = () => setTheme(t => (t === 'dark' ? 'light' : 'dark'));
+  return [theme, toggleTheme];
+}
+
+function ThemeToggleButton({ theme, onToggle }) {
+  return /*#__PURE__*/React.createElement("button", {
+    className: "theme-toggle",
+    onClick: onToggle,
+    "aria-label": "Toggle dark mode",
+    title: theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+  }, /*#__PURE__*/React.createElement("svg", {
+    className: "icon-moon", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor",
+    strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round"
+  }, /*#__PURE__*/React.createElement("path", { d: "M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" })),
+  /*#__PURE__*/React.createElement("svg", {
+    className: "icon-sun", viewBox: "0 0 24 24", fill: "none", stroke: "currentColor",
+    strokeWidth: "2", strokeLinecap: "round", strokeLinejoin: "round"
+  },
+    /*#__PURE__*/React.createElement("circle", { cx: "12", cy: "12", r: "5" }),
+    /*#__PURE__*/React.createElement("line", { x1: "12", y1: "1", x2: "12", y2: "3" }),
+    /*#__PURE__*/React.createElement("line", { x1: "12", y1: "21", x2: "12", y2: "23" }),
+    /*#__PURE__*/React.createElement("line", { x1: "4.22", y1: "4.22", x2: "5.64", y2: "5.64" }),
+    /*#__PURE__*/React.createElement("line", { x1: "18.36", y1: "18.36", x2: "19.78", y2: "19.78" }),
+    /*#__PURE__*/React.createElement("line", { x1: "1", y1: "12", x2: "3", y2: "12" }),
+    /*#__PURE__*/React.createElement("line", { x1: "21", y1: "12", x2: "23", y2: "12" }),
+    /*#__PURE__*/React.createElement("line", { x1: "4.22", y1: "19.78", x2: "5.64", y2: "18.36" }),
+    /*#__PURE__*/React.createElement("line", { x1: "18.36", y1: "5.64", x2: "19.78", y2: "4.22" })
+  ));
+}
 
 /* =====================================================================
    DATA — kept centralized so components stay declarative
@@ -3417,7 +3572,7 @@ function CursorGlow() {
 /* =====================================================================
    NAVIGATION
    ===================================================================== */
-function Header() {
+function Header({ theme, onToggleTheme }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("#home");
@@ -3479,7 +3634,10 @@ function Header() {
     className: active === item.href ? "active" : ""
   }, item.label))), /*#__PURE__*/React.createElement("div", {
     className: "nav-cta"
-  }, /*#__PURE__*/React.createElement("a", {
+  }, /*#__PURE__*/React.createElement(ThemeToggleButton, {
+    theme: theme,
+    onToggle: onToggleTheme
+  }), /*#__PURE__*/React.createElement("a", {
     href: "#contact",
     className: "btn primary sm"
   }, "Get Started")), /*#__PURE__*/React.createElement("button", {
@@ -3512,7 +3670,12 @@ function Header() {
     onClick: closeMenu
   }, "✕")), /*#__PURE__*/React.createElement("div", {
     className: "mobile-panel-links"
-  }, NAV_ITEMS.map(item => /*#__PURE__*/React.createElement("a", {
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "mobile-theme-row"
+  }, /*#__PURE__*/React.createElement("span", null, theme === "dark" ? "Dark Mode" : "Light Mode"), /*#__PURE__*/React.createElement(ThemeToggleButton, {
+    theme: theme,
+    onToggle: onToggleTheme
+  })), NAV_ITEMS.map(item => /*#__PURE__*/React.createElement("a", {
     key: item.href,
     href: item.href,
     className: "mobile-link" + (active === item.href ? " active" : ""),
@@ -3575,10 +3738,11 @@ function HeroFeaturesCard() {
 }
 
 /* =====================================================================
-   HERO BACKGROUND ART — one single abstract graphic (soft brand-colored
-   blobs + a dot grid). Deliberately not a chart/data visualization, so
-   there's nothing with a "correct" shape that can crop, misalign, or be
-   misread — just a clean, professional backdrop.
+   HERO BACKGROUND ART — gradient mesh + a stylized trading-chart motif
+   (silhouette candlesticks and a glowing uptrend line). Purely
+   decorative: no numbers, prices, or ticker data, so nothing here can
+   be misread as real market information — just visual language that
+   says "trading platform" at a glance.
    ===================================================================== */
 function HeroBackgroundArt() {
   const VB_W = 1600, VB_H = 640;
@@ -3593,27 +3757,78 @@ function HeroBackgroundArt() {
     }
   }
 
+  // Stylized candlesticks along the lower third — heights/positions are
+  // decorative only, not derived from any real dataset.
+  const candleData = [
+    22,34,18,40,30,46,26,52,38,60,44,58,50,66,42,70,56,78,64,86,
+    58,90,72,98,80,104,74,110,88,120,96,128,104,136,118,148,110,142,126,158
+  ];
+  const candleGap = 34;
+  const candleW = 14;
+  const baseY = VB_H - 60;
+  const candles = candleData.map((h, i) => {
+    const x = 60 + i * candleGap;
+    const up = i % 3 !== 0;
+    const wickH = h * 1.4;
+    return /*#__PURE__*/React.createElement("g", { key: "c" + i, opacity: 0.5 },
+      /*#__PURE__*/React.createElement("line", {
+        x1: x + candleW / 2, y1: baseY - wickH, x2: x + candleW / 2, y2: baseY,
+        stroke: up ? "#6EE7B7" : "#FCA5A5", strokeWidth: 1.5
+      }),
+      /*#__PURE__*/React.createElement("rect", {
+        x: x, y: baseY - h, width: candleW, height: h, rx: 2,
+        fill: up ? "#34D399" : "#F87171", opacity: 0.75
+      })
+    );
+  });
+
+  // Smooth glowing uptrend line riding above the candlesticks.
+  const trendPts = [
+    [40, 420], [220, 380], [400, 400], [580, 320], [760, 340],
+    [940, 260], [1120, 280], [1300, 190], [1480, 150], [1560, 120]
+  ];
+  const trendPath = trendPts.map((p, i) => (i === 0 ? "M" : "L") + p[0] + " " + p[1]).join(" ");
+  const areaPath = trendPath + " L " + trendPts[trendPts.length - 1][0] + " " + VB_H + " L " + trendPts[0][0] + " " + VB_H + " Z";
+
   return /*#__PURE__*/React.createElement("svg", {
     viewBox: "0 0 " + VB_W + " " + VB_H, preserveAspectRatio: "xMidYMid slice", xmlns: "http://www.w3.org/2000/svg"
   },
     /*#__PURE__*/React.createElement("defs", null,
       /*#__PURE__*/React.createElement("linearGradient", {
         id: "heroArtGrad", x1: "0%", y1: "0%", x2: "100%", y2: "100%"
-      }, /*#__PURE__*/React.createElement("stop", { offset: "0%", stopColor: "#0A2148" }), /*#__PURE__*/React.createElement("stop", { offset: "100%", stopColor: "#123A6E" })),
+      }, /*#__PURE__*/React.createElement("stop", { offset: "0%", stopColor: "#4338CA" }), /*#__PURE__*/React.createElement("stop", { offset: "100%", stopColor: "#7C3AED" })),
       /*#__PURE__*/React.createElement("radialGradient", { id: "blobOrange", cx: "50%", cy: "50%", r: "50%" },
-        /*#__PURE__*/React.createElement("stop", { offset: "0%", stopColor: "#EE7A16", stopOpacity: 0.55 }),
-        /*#__PURE__*/React.createElement("stop", { offset: "100%", stopColor: "#EE7A16", stopOpacity: 0 })),
+        /*#__PURE__*/React.createElement("stop", { offset: "0%", stopColor: "#F472B6", stopOpacity: 0.65 }),
+        /*#__PURE__*/React.createElement("stop", { offset: "100%", stopColor: "#F472B6", stopOpacity: 0 })),
       /*#__PURE__*/React.createElement("radialGradient", { id: "blobTeal", cx: "50%", cy: "50%", r: "50%" },
-        /*#__PURE__*/React.createElement("stop", { offset: "0%", stopColor: "#17B3A3", stopOpacity: 0.5 }),
-        /*#__PURE__*/React.createElement("stop", { offset: "100%", stopColor: "#17B3A3", stopOpacity: 0 })),
+        /*#__PURE__*/React.createElement("stop", { offset: "0%", stopColor: "#22D3EE", stopOpacity: 0.6 }),
+        /*#__PURE__*/React.createElement("stop", { offset: "100%", stopColor: "#22D3EE", stopOpacity: 0 })),
       /*#__PURE__*/React.createElement("radialGradient", { id: "blobViolet", cx: "50%", cy: "50%", r: "50%" },
-        /*#__PURE__*/React.createElement("stop", { offset: "0%", stopColor: "#8B5CF6", stopOpacity: 0.45 }),
-        /*#__PURE__*/React.createElement("stop", { offset: "100%", stopColor: "#8B5CF6", stopOpacity: 0 }))
+        /*#__PURE__*/React.createElement("stop", { offset: "0%", stopColor: "#A78BFA", stopOpacity: 0.55 }),
+        /*#__PURE__*/React.createElement("stop", { offset: "100%", stopColor: "#A78BFA", stopOpacity: 0 })),
+      /*#__PURE__*/React.createElement("linearGradient", { id: "trendArea", x1: "0%", y1: "0%", x2: "0%", y2: "100%" },
+        /*#__PURE__*/React.createElement("stop", { offset: "0%", stopColor: "#34D399", stopOpacity: 0.35 }),
+        /*#__PURE__*/React.createElement("stop", { offset: "100%", stopColor: "#34D399", stopOpacity: 0 })),
+      /*#__PURE__*/React.createElement("filter", { id: "trendGlow" },
+        /*#__PURE__*/React.createElement("feGaussianBlur", { stdDeviation: "4", result: "blur" }),
+        /*#__PURE__*/React.createElement("feMerge", null,
+          /*#__PURE__*/React.createElement("feMergeNode", { in: "blur" }),
+          /*#__PURE__*/React.createElement("feMergeNode", { in: "SourceGraphic" })))
     ),
     /*#__PURE__*/React.createElement("rect", { x: 0, y: 0, width: VB_W, height: VB_H, fill: "url(#heroArtGrad)" }),
     /*#__PURE__*/React.createElement("circle", { cx: 1180, cy: 160, r: 340, fill: "url(#blobOrange)" }),
     /*#__PURE__*/React.createElement("circle", { cx: 1420, cy: 520, r: 300, fill: "url(#blobTeal)" }),
     /*#__PURE__*/React.createElement("circle", { cx: 1080, cy: 580, r: 260, fill: "url(#blobViolet)" }),
+    ...candles,
+    /*#__PURE__*/React.createElement("path", { d: areaPath, fill: "url(#trendArea)" }),
+    /*#__PURE__*/React.createElement("path", {
+      d: trendPath, fill: "none", stroke: "#6EE7B7", strokeWidth: 2.5,
+      strokeLinecap: "round", strokeLinejoin: "round", filter: "url(#trendGlow)", opacity: 0.85
+    }),
+    /*#__PURE__*/React.createElement("circle", {
+      cx: trendPts[trendPts.length - 1][0], cy: trendPts[trendPts.length - 1][1], r: 5,
+      fill: "#6EE7B7", filter: "url(#trendGlow)"
+    }),
     ...dots,
     /*#__PURE__*/React.createElement("circle", { cx: 1180, cy: 160, r: 2, fill: "#fff", opacity: 0.5 }),
     /*#__PURE__*/React.createElement("circle", { cx: 1420, cy: 520, r: 2, fill: "#fff", opacity: 0.5 }),
@@ -5820,7 +6035,8 @@ function Footer() {
    ROOT APP
    ===================================================================== */
 function App() {
-  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(PageLoader, null), /*#__PURE__*/React.createElement(WhatsAppButton, null), /*#__PURE__*/React.createElement(ScrollProgress, null), /*#__PURE__*/React.createElement(CursorGlow, null), /*#__PURE__*/React.createElement(Header, null), /*#__PURE__*/React.createElement(Hero, null), /*#__PURE__*/React.createElement(LogosStrip, null), /*#__PURE__*/React.createElement(TrustBadges, null), /*#__PURE__*/React.createElement(StatsStrip, null), /*#__PURE__*/React.createElement(About, null), /*#__PURE__*/React.createElement(QuickFacts, null), /*#__PURE__*/React.createElement(InstrumentTypes, null), /*#__PURE__*/React.createElement(ServicesGrid, null), /*#__PURE__*/React.createElement(ServiceDetails, null), /*#__PURE__*/React.createElement(PPTService, null), /*#__PURE__*/React.createElement(ToolShowcase, null), /*#__PURE__*/React.createElement(MarketOverview, null), /*#__PURE__*/React.createElement(StockScreener, null), /*#__PURE__*/React.createElement(EconomicCalendar, null), /*#__PURE__*/React.createElement(CurrenciesCommodities, null), /*#__PURE__*/React.createElement(InvestorPersonas, null), /*#__PURE__*/React.createElement(HowItWorks, null), /*#__PURE__*/React.createElement(WhyChooseUs, null), /*#__PURE__*/React.createElement(Community, null), /*#__PURE__*/React.createElement(CloudPlatform, null), /*#__PURE__*/React.createElement(ComparisonTable, null), /*#__PURE__*/React.createElement(Testimonials, null), /*#__PURE__*/React.createElement(CaseStudies, null), /*#__PURE__*/React.createElement(AwardsStrip, null), /*#__PURE__*/React.createElement(PressMentions, null), /*#__PURE__*/React.createElement(MissionVision, null), /*#__PURE__*/React.createElement(Roadmap, null), /*#__PURE__*/React.createElement(LearningCenter, null), /*#__PURE__*/React.createElement(MarketInsights, null), /*#__PURE__*/React.createElement(Glossary, null), /*#__PURE__*/React.createElement(Webinars, null), /*#__PURE__*/React.createElement(NewsletterArchive, null), /*#__PURE__*/React.createElement(ServicesFaq, null), /*#__PURE__*/React.createElement(HelpCenter, null), /*#__PURE__*/React.createElement(BeginnerMistakes, null), /*#__PURE__*/React.createElement(SecurityTrust, null), /*#__PURE__*/React.createElement(DataSources, null), /*#__PURE__*/React.createElement(IntegrationsGrid, null), /*#__PURE__*/React.createElement(Careers, null), /*#__PURE__*/React.createElement(Newsletter, null), /*#__PURE__*/React.createElement(Pricing, null), /*#__PURE__*/React.createElement(PaymentMethods, null), /*#__PURE__*/React.createElement(ApiPreview, null), /*#__PURE__*/React.createElement("div", {
+  const [theme, toggleTheme] = useTheme();
+  return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(PageLoader, null), /*#__PURE__*/React.createElement(WhatsAppButton, null), /*#__PURE__*/React.createElement(ScrollProgress, null), /*#__PURE__*/React.createElement(CursorGlow, null), /*#__PURE__*/React.createElement(Header, { theme: theme, onToggleTheme: toggleTheme }), /*#__PURE__*/React.createElement(Hero, null), /*#__PURE__*/React.createElement(LogosStrip, null), /*#__PURE__*/React.createElement(TrustBadges, null), /*#__PURE__*/React.createElement(StatsStrip, null), /*#__PURE__*/React.createElement(About, null), /*#__PURE__*/React.createElement(QuickFacts, null), /*#__PURE__*/React.createElement(InstrumentTypes, null), /*#__PURE__*/React.createElement(ServicesGrid, null), /*#__PURE__*/React.createElement(ServiceDetails, null), /*#__PURE__*/React.createElement(PPTService, null), /*#__PURE__*/React.createElement(ToolShowcase, null), /*#__PURE__*/React.createElement(MarketOverview, null), /*#__PURE__*/React.createElement(StockScreener, null), /*#__PURE__*/React.createElement(EconomicCalendar, null), /*#__PURE__*/React.createElement(CurrenciesCommodities, null), /*#__PURE__*/React.createElement(InvestorPersonas, null), /*#__PURE__*/React.createElement(HowItWorks, null), /*#__PURE__*/React.createElement(WhyChooseUs, null), /*#__PURE__*/React.createElement(Community, null), /*#__PURE__*/React.createElement(CloudPlatform, null), /*#__PURE__*/React.createElement(ComparisonTable, null), /*#__PURE__*/React.createElement(Testimonials, null), /*#__PURE__*/React.createElement(CaseStudies, null), /*#__PURE__*/React.createElement(AwardsStrip, null), /*#__PURE__*/React.createElement(PressMentions, null), /*#__PURE__*/React.createElement(MissionVision, null), /*#__PURE__*/React.createElement(Roadmap, null), /*#__PURE__*/React.createElement(LearningCenter, null), /*#__PURE__*/React.createElement(MarketInsights, null), /*#__PURE__*/React.createElement(Glossary, null), /*#__PURE__*/React.createElement(Webinars, null), /*#__PURE__*/React.createElement(NewsletterArchive, null), /*#__PURE__*/React.createElement(ServicesFaq, null), /*#__PURE__*/React.createElement(HelpCenter, null), /*#__PURE__*/React.createElement(BeginnerMistakes, null), /*#__PURE__*/React.createElement(SecurityTrust, null), /*#__PURE__*/React.createElement(DataSources, null), /*#__PURE__*/React.createElement(IntegrationsGrid, null), /*#__PURE__*/React.createElement(Careers, null), /*#__PURE__*/React.createElement(Newsletter, null), /*#__PURE__*/React.createElement(Pricing, null), /*#__PURE__*/React.createElement(PaymentMethods, null), /*#__PURE__*/React.createElement(ApiPreview, null), /*#__PURE__*/React.createElement("div", {
     className: "wrap"
   }, /*#__PURE__*/React.createElement(CtaBand, {
     title: "Start researching smarter today.",
