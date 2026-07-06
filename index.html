@@ -1500,6 +1500,21 @@ footer{ border-top:1px solid var(--line); padding: 64px 0 34px; background: var(
    --------------------------------------------------------------------- */
 .legal-grid{ display:grid; grid-template-columns: repeat(2,1fr); gap:20px; }
 .legal-card{ padding:24px; border:1px solid var(--line); border-radius: var(--r-md); background: var(--surface-2); }
+.legal-doc-notice{
+  background: var(--accent-100); border:1px solid var(--accent-700); border-radius: var(--r-md);
+  padding:18px 22px; font-size:14px; color: var(--ink-800); margin-bottom:32px;
+}
+.legal-doc-panel{
+  background: var(--glass-bg, var(--white)); border:1px solid var(--line); border-radius: var(--r-lg);
+  box-shadow: var(--shadow-sm); padding: 32px 36px; margin-bottom: 22px;
+}
+.legal-doc-panel h3{ font-size:19px; margin:0 0 12px; display:flex; align-items:center; gap:10px; }
+.legal-doc-panel h3 .num{ font-family:'IBM Plex Mono',monospace; font-size:12.5px; color: var(--accent-700); background: var(--accent-100); padding:3px 9px; border-radius: var(--r-full); }
+.legal-doc-panel p{ margin:0 0 12px; color: var(--ink-600); font-size:15px; }
+.legal-doc-panel p:last-child{ margin-bottom:0; }
+.legal-doc-panel ul{ margin:0 0 12px; padding-left:20px; color: var(--ink-600); font-size:15px; }
+.legal-doc-panel li{ margin-bottom:6px; }
+.legal-doc-updated{ font-size:13px; color: var(--ink-400); font-family:'IBM Plex Mono',monospace; margin-bottom:36px; }
 .legal-card h4{ font-size:14.5px; color: var(--ink-900); margin-bottom:8px; font-family:'Inter',sans-serif; font-weight:600; }
 .legal-card p{ font-size:13px; color: var(--ink-600); }
 
@@ -5749,6 +5764,126 @@ function Disclaimer() {
 }
 
 /* =====================================================================
+   TERMS OF USE — full document, in-page (linked from the footer)
+   ===================================================================== */
+function TermsFull() {
+  const sections = [
+    { t: "Acceptance of Terms", d: "By creating an account or otherwise using Trades Bharat, you agree to be bound by these Terms & Conditions and our Privacy Policy. If you do not agree, please do not use the platform." },
+    { t: "Educational Use Only", d: "The information available on this platform is provided solely for educational, informational, and research purposes. It should not be considered personalized investment, financial, or legal advice. You should conduct your own research and consult qualified professionals before making investment decisions. Investing in financial markets involves risk, including the possible loss of capital." },
+    { t: "Your Account", d: "You are responsible for maintaining the confidentiality of your account credentials and for all activity that occurs under your account. Notify us immediately of any unauthorized use." },
+    { t: "Acceptable Use", d: "You agree not to misuse the platform, including attempting to disrupt its operation, scraping data at scale, reverse-engineering the service, or using it for any unlawful purpose." },
+    { t: "Intellectual Property", d: "All content, branding, and research published by Trades Bharat is our property or licensed to us, and may not be reproduced or redistributed without permission." },
+    { t: "Limitation of Liability", d: "Trades Bharat, its team, and affiliates are not liable for any losses, damages, or costs arising from decisions made using information provided on this platform, to the fullest extent permitted by law." },
+    { t: "Changes to These Terms", d: "We may update these Terms & Conditions from time to time. Continued use of the platform after changes are posted constitutes acceptance of the revised terms." }
+  ];
+  const riskPoints = [
+    { t: "Market Risk", d: "Stock prices can fluctuate significantly due to company performance, sector trends, and broader economic conditions." },
+    { t: "No Guaranteed Returns", d: "Past performance shown in research or historical charts does not guarantee similar future results." },
+    { t: "Data Limitations", d: "While we strive for accuracy, research data may occasionally lag real-time market conditions or contain errors." },
+    { t: "Independent Decision-Making", d: "Every investment decision should be made independently or with a licensed financial advisor, based on your own goals and risk tolerance." }
+  ];
+  return /*#__PURE__*/React.createElement("section", {
+    className: "section-tight section-border-b", id: "terms"
+  }, /*#__PURE__*/React.createElement("div", { className: "wrap" },
+    /*#__PURE__*/React.createElement(Reveal, { className: "section-head" },
+      /*#__PURE__*/React.createElement("div", null,
+        /*#__PURE__*/React.createElement("div", { className: "kicker" }, "Legal"),
+        /*#__PURE__*/React.createElement("h2", null, "Terms & Conditions")
+      ),
+      /*#__PURE__*/React.createElement("p", null, "Please read these terms carefully before using the platform.")
+    ),
+    /*#__PURE__*/React.createElement("div", { className: "legal-doc-updated" }, "Last updated: July 2026"),
+    /*#__PURE__*/React.createElement(Reveal, { delay: 1, className: "legal-doc-notice" },
+      "Trades Bharat is an educational and research platform. Nothing on this site is personalized investment, financial, or legal advice."
+    ),
+    sections.slice(0, 2).map((s, i) => /*#__PURE__*/React.createElement(Reveal, { delay: i + 1, key: "t1-" + i },
+      /*#__PURE__*/React.createElement("div", { className: "legal-doc-panel" },
+        /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement("span", { className: "num" }, "0" + (i + 1)), s.t),
+        /*#__PURE__*/React.createElement("p", null, s.d)
+      )
+    )),
+    /*#__PURE__*/React.createElement(Reveal, { delay: 3 },
+      /*#__PURE__*/React.createElement("div", { className: "legal-doc-panel" },
+        /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement("span", { className: "num" }, "03"), "Risk Disclosure"),
+        /*#__PURE__*/React.createElement("ul", null, riskPoints.map((r, i) => /*#__PURE__*/React.createElement("li", { key: i }, /*#__PURE__*/React.createElement("strong", null, r.t), " — ", r.d)))
+      )
+    ),
+    sections.slice(2).map((s, i) => /*#__PURE__*/React.createElement(Reveal, { delay: (i % 4) + 1, key: "t2-" + i },
+      /*#__PURE__*/React.createElement("div", { className: "legal-doc-panel" },
+        /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement("span", { className: "num" }, "0" + (i + 4)), s.t),
+        /*#__PURE__*/React.createElement("p", null, s.d)
+      )
+    )),
+    /*#__PURE__*/React.createElement(Reveal, { delay: 2 },
+      /*#__PURE__*/React.createElement("div", { className: "legal-doc-panel" },
+        /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement("span", { className: "num" }, "09"), "Contact"),
+        /*#__PURE__*/React.createElement("p", null, "Questions about these terms? Reach us via the ", /*#__PURE__*/React.createElement("a", { href: "#contact" }, "contact section"), ".")
+      )
+    )
+  ));
+}
+
+/* =====================================================================
+   PRIVACY POLICY — full document, in-page (linked from the footer)
+   ===================================================================== */
+function PrivacyFull() {
+  const sections = [
+    { t: "Information We Collect", d: "When you create an account or use the platform, we may collect your name, email address, and basic usage data such as which tools and pages you interact with. We do not require government ID or financial account details to use the research and education features." },
+    { t: "How We Use Information", d: "We use your information to provide and improve the platform, personalize your watchlists and research feed, respond to support requests, and send you updates you've opted into. We do not use your data to build advertising profiles." },
+    { t: "Data Sharing", d: "We do not sell your personal data. We may share limited information with service providers who help us operate the platform (such as hosting and email delivery), under confidentiality obligations, or when required by law." },
+    { t: "Data Security", d: "We use industry-standard safeguards to protect your information, including encrypted connections and access controls. No system is perfectly secure, so we encourage you to use a strong, unique password." },
+    { t: "Your Rights", d: "You can request to access, correct, or delete your personal data at any time by contacting us. You may also close your account, which removes your profile information from active use." },
+    { t: "Children's Privacy", d: "Trades Bharat is not directed at children and is not intended for use by anyone under the age required to hold a demat or trading account in their jurisdiction." },
+    { t: "Changes to This Policy", d: "We may update this Privacy Policy from time to time. Continued use of the platform after changes are posted constitutes acceptance of the revised policy." }
+  ];
+  const cookiePoints = [
+    { t: "Essential cookies", d: "Used to keep you logged in and remember basic preferences like your selected theme." },
+    { t: "Analytics cookies", d: "Help us understand which pages and tools are most useful, so we can improve the platform." },
+    { t: "No third-party ad tracking", d: "We do not use cookies to serve targeted advertising or share browsing data with ad networks." },
+    { t: "Your choices", d: "You can manage or clear cookies at any time through your browser settings." }
+  ];
+  return /*#__PURE__*/React.createElement("section", {
+    className: "section-tight section-border-b", id: "privacy"
+  }, /*#__PURE__*/React.createElement("div", { className: "wrap" },
+    /*#__PURE__*/React.createElement(Reveal, { className: "section-head" },
+      /*#__PURE__*/React.createElement("div", null,
+        /*#__PURE__*/React.createElement("div", { className: "kicker" }, "Legal"),
+        /*#__PURE__*/React.createElement("h2", null, "Privacy Policy")
+      ),
+      /*#__PURE__*/React.createElement("p", null, "What we collect, how we use it, and the choices you have.")
+    ),
+    /*#__PURE__*/React.createElement("div", { className: "legal-doc-updated" }, "Last updated: July 2026"),
+    /*#__PURE__*/React.createElement(Reveal, { delay: 1, className: "legal-doc-notice" },
+      "This Privacy Policy explains what information Trades Bharat collects, how it is used, and the choices you have. We do not sell your personal data."
+    ),
+    sections.slice(0, 2).map((s, i) => /*#__PURE__*/React.createElement(Reveal, { delay: i + 1, key: "p1-" + i },
+      /*#__PURE__*/React.createElement("div", { className: "legal-doc-panel" },
+        /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement("span", { className: "num" }, "0" + (i + 1)), s.t),
+        /*#__PURE__*/React.createElement("p", null, s.d)
+      )
+    )),
+    /*#__PURE__*/React.createElement(Reveal, { delay: 3 },
+      /*#__PURE__*/React.createElement("div", { className: "legal-doc-panel" },
+        /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement("span", { className: "num" }, "03"), "Cookies"),
+        /*#__PURE__*/React.createElement("ul", null, cookiePoints.map((c, i) => /*#__PURE__*/React.createElement("li", { key: i }, /*#__PURE__*/React.createElement("strong", null, c.t), " — ", c.d)))
+      )
+    ),
+    sections.slice(2).map((s, i) => /*#__PURE__*/React.createElement(Reveal, { delay: (i % 4) + 1, key: "p2-" + i },
+      /*#__PURE__*/React.createElement("div", { className: "legal-doc-panel" },
+        /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement("span", { className: "num" }, "0" + (i + 4)), s.t),
+        /*#__PURE__*/React.createElement("p", null, s.d)
+      )
+    )),
+    /*#__PURE__*/React.createElement(Reveal, { delay: 2 },
+      /*#__PURE__*/React.createElement("div", { className: "legal-doc-panel" },
+        /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement("span", { className: "num" }, "09"), "Contact"),
+        /*#__PURE__*/React.createElement("p", null, "Questions about your data or this policy? Reach us via the ", /*#__PURE__*/React.createElement("a", { href: "#contact" }, "contact section"), ".")
+      )
+    )
+  ));
+}
+
+/* =====================================================================
    CONTACT
    ===================================================================== */
 function ContactForm() {
@@ -6021,11 +6156,11 @@ function Footer() {
   }, "Compare Plans")))), /*#__PURE__*/React.createElement("div", {
     className: "footer-col"
   }, /*#__PURE__*/React.createElement("h4", null, "Legal"), /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
-    href: "#"
+    href: "#terms"
   }, "Disclaimer")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
-    href: "#"
+    href: "#privacy"
   }, "Privacy Policy")), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("a", {
-    href: "#"
+    href: "#terms"
   }, "Terms of Use"))))), /*#__PURE__*/React.createElement(Sitemap, null), /*#__PURE__*/React.createElement("div", {
     className: "footer-bottom"
   }, /*#__PURE__*/React.createElement("span", null, "© 2026 Trades Bharat. All rights reserved."), /*#__PURE__*/React.createElement("span", null, "Educational & informational purposes only — not investment advice."))));
@@ -6041,7 +6176,7 @@ function App() {
   }, /*#__PURE__*/React.createElement(CtaBand, {
     title: "Start researching smarter today.",
     copy: "Create a free Trades Bharat account and get access to research tools, watchlists, and the full Learning Center."
-  })), /*#__PURE__*/React.createElement(Contact, null), /*#__PURE__*/React.createElement(Disclaimer, null), /*#__PURE__*/React.createElement(RiskDisclosure, null), /*#__PURE__*/React.createElement(CookiePolicy, null), /*#__PURE__*/React.createElement(SupportedPlatforms, null), /*#__PURE__*/React.createElement(AccessibilityStatement, null), /*#__PURE__*/React.createElement(Footer, null));
+  })), /*#__PURE__*/React.createElement(Contact, null), /*#__PURE__*/React.createElement(Disclaimer, null), /*#__PURE__*/React.createElement(RiskDisclosure, null), /*#__PURE__*/React.createElement(CookiePolicy, null), /*#__PURE__*/React.createElement(TermsFull, null), /*#__PURE__*/React.createElement(PrivacyFull, null), /*#__PURE__*/React.createElement(SupportedPlatforms, null), /*#__PURE__*/React.createElement(AccessibilityStatement, null), /*#__PURE__*/React.createElement(Footer, null));
 }
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(/*#__PURE__*/React.createElement(App, null));
